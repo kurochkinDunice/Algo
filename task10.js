@@ -1,3 +1,4 @@
+ // o(n)
 let func = (n) => {
     console.time('TIME')
     /*********************/
@@ -6,6 +7,8 @@ let func = (n) => {
     let pr = [];
     let ans = 0;
 
+
+   
     for (let i = 2; i <= n; ++i) {
         if (!lp[i]) {
             lp[i] = i;
