@@ -1,3 +1,4 @@
+// o(n*n/4)
 const table = [
     [01,01,01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
     [01,01,01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
@@ -27,19 +28,6 @@ const table = [
     [01,01,01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
 ]
 
-function normalArray(matrix) {
-    const size = matrix.length
-    const array = []
-
-    for (let i = 0; i < size; ++i) {
-        for (let j = 0; j < size; ++j) {
-            array.push(matrix[i][j])
-        }
-    }
-
-    return array
-}
-
 function maxMult(table) {
     console.time('TIME')
     /*********************/
@@ -49,8 +37,8 @@ function maxMult(table) {
     let helper = 0;
 
     // workingArray[i * size + j]
-    for (let i = 3; i < size; i += 1) {
-        for (let j = 3; j < size; j += 1) {
+    for (let i = 3; i < size; i += 3) {
+        for (let j = 3; j < size; j += 3) {
             
             let leftTopDiagMult =
                 rightTopDiagMult =
