@@ -45,13 +45,12 @@ function maxMult(table) {
     /*********************/
 
     const size = 20
-    let workingArray = normalArray(table)
     let max = 0;
     let helper = 0;
 
     // workingArray[i * size + j]
-    for (let i = 3; i < size; i += 4) {
-        for (let j = 3; j < size; j += 4) {
+    for (let i = 3; i < size; i += 1) {
+        for (let j = 3; j < size; j += 1) {
             
             let leftTopDiagMult =
                 rightTopDiagMult =
@@ -62,18 +61,18 @@ function maxMult(table) {
                 leftMult =
                 downMult = 1
 
-            for (let k = 0; k < 3; ++k) {
+            for (let k = 0; k < 4; ++k) {
                 // diagonals
-                leftTopDiagMult *= workingArray[(i - k) * size + j - k];
-                rightTopDiagMult *= workingArray[(i - k) * size + j + k];
-                leftDownDiagMult *= workingArray[(i + k) * size + j - k];
-                rightDownDiagMult *= workingArray[(i + k) * size + j + k];
+                leftTopDiagMult *= table[i - k][j - k];
+                rightTopDiagMult *= table[i - k][j + k];
+                leftDownDiagMult *= table[i + k][j - k];
+                rightDownDiagMult *= table[i + k][j + k];
 
                 // others
-                topMult *= workingArray[(i - k) * size + j];
-                rightMult *= workingArray[i * size + j + k];
-                leftMult *= workingArray[i * size + j - k];
-                downMult *= workingArray[(i + k) * size + j];
+                topMult *= table[i - k][j];
+                rightMult *= table[i][j + k];
+                leftMult *= table[i][j - k];
+                downMult *= table[i + k][j];
             }
 
             helper = Math.max(leftTopDiagMult, 
@@ -93,6 +92,7 @@ function maxMult(table) {
     /*********************/
     console.timeEnd('TIME')
 
+    // 70600674
     console.log(max);
 }
 
