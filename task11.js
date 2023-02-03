@@ -1,4 +1,4 @@
-// o(n*n/4)
+// o((n/4)*n)
 const table = [
     [01,01,01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
     [01,01,01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01, 01],
@@ -37,9 +37,8 @@ function maxMult(table) {
     let helper = 0;
 
     // workingArray[i * size + j]
-    for (let i = 3; i < size; i += 3) {
-        for (let j = 3; j < size; j += 3) {
-            
+    for (let i = 3; i < size; i += 4) {
+        for (let j = 3; j < size; ++j) {      
             let leftTopDiagMult =
                 rightTopDiagMult =
                 leftDownDiagMult =
@@ -63,15 +62,16 @@ function maxMult(table) {
                 downMult *= table[i + k][j];
             }
 
-            helper = Math.max(leftTopDiagMult, 
-                              rightTopDiagMult, 
-                              leftDownDiagMult, 
-                              rightDownDiagMult,
-                              topMult, 
-                              rightMult, 
-                              leftMult, 
-                              downMult
-                            );
+            helper = Math.max(
+                leftTopDiagMult, 
+                rightTopDiagMult, 
+                leftDownDiagMult, 
+                rightDownDiagMult,
+                topMult, 
+                rightMult, 
+                leftMult, 
+                downMult
+            );
 
             max = Math.max(max, helper);
         }
