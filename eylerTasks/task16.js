@@ -7,8 +7,6 @@ function sumDigit(num) {
     return sum
 }
 
-console.log(sumDigit(BigInt(Math.pow(2, 1000))));
-
 console.time('TIME');
 let ans = sumDigit(BigInt(Math.pow(2, 1000)));
 console.timeEnd('TIME');
