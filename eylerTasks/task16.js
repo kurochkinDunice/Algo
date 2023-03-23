@@ -1,3 +1,4 @@
+// O(n)
 function sumDigit(num) {
     let sum = 0n
     do {
